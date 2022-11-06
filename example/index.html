@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
   <meta charset='utf-8'>
@@ -63,7 +63,7 @@ var map = L.map('map', {editable: true}).setView(startPoint, 16),
 
         options: {
             position: 'topleft',
-            callback: map.editTools.startPolygon,
+            callback: function(latlng, options) { var polygon = map.editTools.startPolygon(latlng, options); polygon.showMeasurements(); },
             kind: 'polygon',
             html: '▰'
         }
@@ -77,17 +77,6 @@ var map = L.map('map', {editable: true}).setView(startPoint, 16),
             callback: map.editTools.startMarker,
             kind: 'marker',
             html: '🖈'
-        }
-
-    });
-
-    L.NewRectangleControl = L.EditControl.extend({
-
-        options: {
-            position: 'topleft',
-            callback: map.editTools.startRectangle,
-            kind: 'rectangle',
-            html: '⬛'
         }
 
     });
