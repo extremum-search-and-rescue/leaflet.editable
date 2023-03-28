@@ -727,7 +727,7 @@
             L.Editable.makeCancellable(e);
             this.editor.onMiddleMarkerMouseDown(e);
             if (e._cancelled) return;
-            if(e.originalEvent.button !== 0 ) return;
+            if (Object.hasOwnProperty(e.originalEvent.button) && e.originalEvent.button !== 0) return;
             this.latlngs.splice(this.index(), 0, e.latlng);
             this.editor.refresh();
             var icon = this._icon;
